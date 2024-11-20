@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Mestre Cuca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projeto Restaurante.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="./Logo Restaurante.png" alt="Logo" class="logo">
+            <h1 class="h1">Bem-vindos (a) ao Restaurante Mestre Cuca</h1>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav id="navbar">
+            <ul class="navbar-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#footer">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <div class="inicio-content">
+            <h1>Restaurante Mestre Cuca</h1>
+        </div>
+        <form class="form-container">
+            <h2>Formulário de Contato</h2>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="people">Quantidade de Pessoas:</label>
+            <input type="number" id="people" name="people" min="1" required>
+
+            <label for="date">Data:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Hora:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Reservar</button>
+        </form>
+    </section>
+
+    <section id="cardapio">
+        <h2>Cardápio</h2>
+        <p>Confira nossas delícias!</p>
+        <img src="./Cardápio Restaurante.png" alt="Cardápio" />
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <h2>Entre em contato conosco!</h2>
+        <h2>Telefone: (11) 1234-5678</h2>
+        <h2>Email: contato@mestre-cuca.com.br</h2>
+        <p>Estamos sempre prontos para ouvir você! Se você tiver alguma dúvida, sugestão ou feedback, não hesite em nos contatar. Nossa equipe está disponível para ajudá-lo da melhor maneira possível.</p>
+        <p>Você pode entrar em contato conosco através do telefone, e-mail ou diretamente pelo nosso formulário de contato. Queremos garantir que sua experiência conosco seja a mais agradável possível.</p>
+        <p>Além disso, adoramos saber como foi a sua visita ao nosso restaurante! Seu feedback é essencial para que possamos continuar aprimorando nossos serviços e oferecer a melhor experiência gastronômica.</p>
+        <p>Fique à vontade para nos seguir nas redes sociais e ficar por dentro das novidades, promoções e eventos especiais que estamos organizando. Adoramos interagir com nossos clientes e compartilhar momentos especiais!</p>
+        <p>Agradecemos por escolher o Restaurante Mestre Cuca. Estamos ansiosos para recebê-lo em breve e proporcionar uma experiência inesquecível!</p>
+    </section>
+
+    <footer id="footer">
+        <p>Desenvolvido Por <a href="http://wa.me/5521998026461">Anderson Pacheco</a> - Todos os Direitos Reservados &copy; Restaurante Mestre Cuca</p>
+    </footer>
+
+    <script>
+        // Adiciona evento de clique ao menu hamburguer
+        document.getElementById('menu-toggle').addEventListener('click', function(event) {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('active'); // Alterna a classe 'active' para mostrar/ocultar o menu
+            event.stopPropagation(); // Impede que o clique no menu hamburguer feche o menu
+        });
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(event) {
+            const navbar = document.getElementById('navbar');
+            if (navbar.classList.contains('active') && !navbar.contains(event.target) && !document.getElementById('menu-toggle').contains(event.target)) {
+                navbar.classList.remove('active'); // Remove a classe 'active' se clicar fora do menu
+            }
+        });
+
+        // Adiciona rolagem suave ao clicar nos links do menu
+        document.querySelectorAll('#navbar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                const navbar = document.getElementById('navbar');
+                navbar.classList.remove('active'); // Fecha o menu após clicar em um link
+            });
+        });
+    </script>
+</body>
+</html>
